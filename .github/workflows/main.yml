@@ -18,7 +18,7 @@ jobs:
         destination_repo: 'builtmighty/smart-health-cards.github.io'
         destination_folder: '/'
         destination_base_branch: 'gh-pages'
-        destination_head_branch: 'gh-pages'
+        destination_head_branch: 'br_pull-request'
         user_email: 'kreig.e.durham@gmail.com'
         user_name: 'KreigD'
         pr_title: 'test pr: disregard'
