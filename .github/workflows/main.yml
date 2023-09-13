@@ -1,6 +1,9 @@
 name: Push File to Prod (test)
 
-on: push
+on:
+  push:
+    branches:
+      - gh-pages
 
 jobs:
   pull-request:
@@ -11,17 +14,16 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        ref: gh-pages
 
     - name: Create pull request
-      uses: car-on-sale/action-pull-request-another-repo@v1.3.1
+      uses: peter-evans/create-pull-request@v5.0.2
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        source_folder: '/'
-        destination_repo: 'builtmighty/smart-health-cards.github.io'
-        destination_folder: '/'
-        destination_base_branch: 'gh-pages'
-        destination_head_branch: 'br_pull-request'
-        user_email: 'kreig.e.durham@gmail.com'
-        user_name: 'KreigD'
-        pr_title: 'test pr: disregard'
-        commit_msg: 'Update from https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA'
+        token: ${{ secrets.GITHUB_TOKEN }}
+        push-to-fork: 'builtmighty/smart-health-cards.github.io'
+        base: 'gh-pages'
+        branch: 'create-pull-request/br_pull-request'
+        delete-branch: true
+        title: test pr
+        commit-message: Update from https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA
