@@ -22,3 +22,4 @@ jobs:
         user_email: 'kreig.e.durham@gmail.com'
         user_name: 'KreigD'
         pr_title: 'test pr: disregard'
+        commit_msg: 'Update from https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA'
