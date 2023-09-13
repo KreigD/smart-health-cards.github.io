@@ -15,15 +15,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
+        repository: builtmighty/smart-health-cards.github.io
         ref: gh-pages
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5.0.2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        push-to-fork: 'builtmighty/smart-health-cards.github.io'
-        base: 'gh-pages'
-        branch: 'create-pull-request/br_pull-request'
+        base: gh-pages
+        branch: create-pull-request/br_pull-request
         delete-branch: true
         title: test pr
         commit-message: Update from https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA
