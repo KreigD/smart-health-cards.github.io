@@ -3,7 +3,7 @@ name: Push File to Prod (test)
 on:
   push:
     branches:
-      - gh-pages
+      gh-pages
 
 jobs:
   pull-request:
@@ -13,16 +13,16 @@ jobs:
       pull-requests: write
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         repository: builtmighty/smart-health-cards.github.io
         ref: gh-pages
 
     - name: Create pull request
-      uses: peter-evans/create-pull-request@v5.0.2
+      uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        base: gh-pages
+        # base: gh-pages
         branch: create-pull-request/br_pull-request
         delete-branch: true
         title: test pr
