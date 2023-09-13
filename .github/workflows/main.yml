@@ -5,15 +5,17 @@ on: push
 jobs:
   pull-request:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
     - name: Create pull request
       uses: car-on-sale/action-pull-request-another-repo@v1.3.1
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
       with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
         source_folder: '/'
         destination_repo: 'builtmighty/smart-health-cards.github.io'
         destination_folder: '/'
