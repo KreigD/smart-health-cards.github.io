@@ -17,21 +17,11 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         repository: builtmighty/smart-health-cards.github.io
-        ref: gh-pages
-
-    # Make changes to pull request
-    - name: Update pull request
-      run: |
-        git config --global user.name 'KreigD'
-        git config --global user.email 'kreig.e.durham@gmail.com'
-        git add .
-        git commit -m "Update from other repo"
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        base: gh-pages
         branch: create-pull-request/br_pull-request
         branch-suffix: timestamp
         delete-branch: true
