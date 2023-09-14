@@ -12,13 +12,17 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-    - uses: actions/checkout@v4
     - name: Checkout
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         repository: builtmighty/smart-health-cards.github.io
         ref: gh-pages
+
+    - name: Update pull request
+      run: |
+        git add -A
+        git commit -m "Add files for git push"
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
