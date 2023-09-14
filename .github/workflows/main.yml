@@ -9,8 +9,8 @@ jobs:
   build-changes:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - name: Add local changes
-      uses: actions/checkout@v4
       run: |
         git config user.name 'GitHub Bot'
         git config user.email 'sample@email.com'
