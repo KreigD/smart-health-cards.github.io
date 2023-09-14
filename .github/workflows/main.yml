@@ -12,6 +12,14 @@ jobs:
       contents: read
       pull-requests: write
     steps:
+    - name: Make Changes
+      run: |
+        # Add your commands here to make the necessary changes
+        echo "This is a test change" > test.txt
+        git add .
+        git commit -m "Update files for workflow"
+        git push origin gh-pages
+
     - name: Checkout
       uses: actions/checkout@v4
       with:
@@ -20,9 +28,6 @@ jobs:
         ref: gh-pages
 
     - name: Update pull request
-      run: |
-        git add -A
-        git commit -m "Add files for git push"
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
