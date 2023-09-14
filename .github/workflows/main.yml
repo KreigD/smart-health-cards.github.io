@@ -15,8 +15,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
+        token: ${{ secrets.GITHUB_TOKEN }}
         repository: builtmighty/smart-health-cards.github.io
-        ref: gh-pages
+        # ref: gh-pages
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
