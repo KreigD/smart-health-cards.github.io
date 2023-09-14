@@ -10,7 +10,7 @@ jobs:
   build-changes:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v4
     - name: Save changes
       uses: actions/upload-artifact@v3
       with:
@@ -26,7 +26,7 @@ jobs:
       pull-requests: write
     steps:
     - name: Checkout remote
-      uses: actions/checkout@v5
+      uses: actions/checkout@v4
       with:
         token: ${{ secrets.PAT }}
         repository: KreigD/smart-health-cards-staging.github.io
