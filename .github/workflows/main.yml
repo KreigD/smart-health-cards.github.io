@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.PAT }}
-        repository: builtmighty/smart-health-cards.github.io
+        repository: smart-health-cards/smart-health-cards-staging.github.io
 
     # Make changes to the pull request
     - name: Update pull request
