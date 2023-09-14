@@ -15,6 +15,7 @@ jobs:
       with:
         name: changes
         path: ./
+        retention-days: 1
 
   pull-request:
     needs: build-changes
