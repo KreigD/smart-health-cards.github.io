@@ -12,10 +12,10 @@ jobs:
     - name: Add local changes
       uses: actions/checkout@v4
       run: |
-      git config user.name 'GitHub Bot'
-      git config user.email 'sample@email.com'
-      git add .
-      git commit -m "Update from other repo"
+        git config user.name 'GitHub Bot'
+        git config user.email 'sample@email.com'
+        git add .
+        git commit -m "Update from other repo"
 
     - name: Save changes
       uses: actions/upload-artifact@v3
