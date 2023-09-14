@@ -10,13 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Add local changes
-      run: |
-        git config user.name 'GitHub Bot'
-        git config user.email 'sample@email.com'
-        git add .
-        git commit -m "Update from other repo"
-
     - name: Save changes
       uses: actions/upload-artifact@v3
       with:
@@ -34,6 +27,12 @@ jobs:
       with:
         token: ${{ secrets.PAT }}
         repository: KreigD/smart-health-cards-staging.github.io
+
+    - name: Download changes
+      uses: actions/download-artifact@v3
+      with:
+        name: changes
+        path: changes
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
