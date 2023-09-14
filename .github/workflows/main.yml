@@ -6,10 +6,26 @@ on:
       gh-pages
 
 jobs:
+  build-changes:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Add local changes
+      uses: actions/checkout@v4
+      run: |
+      git config user.name 'GitHub Bot'
+      git config user.email 'sample@email.com'
+      git add .
+      git commit -m "Update from other repo"
+
+    - name: Save changes
+      uses: actions/upload-artifact@v3
+      with:
+        name: changes
+        path: changes
+
   pull-request:
     runs-on: ubuntu-latest
     permissions:
-      # Repo scope required to create pull requests against the repository
       contents: read
       pull-requests: write
     steps:
@@ -18,16 +34,6 @@ jobs:
       with:
         token: ${{ secrets.PAT }}
         repository: KreigD/smart-health-cards-staging.github.io
-
-    # Update the pull request with the local changes
-    - name: Update pull request
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-        git checkout -b create-pull-request/br_pull-request
-        git add .
-        git commit -m "Update from other repo"
-        git push origin create-pull-request/br_pull-request
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
