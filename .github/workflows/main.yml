@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: EndBug/add-and-commit@v9
-      with:
-        tag_push: '--force'
     - name: Save changes
       uses: actions/upload-artifact@v3
       with:
