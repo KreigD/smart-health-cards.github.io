@@ -9,13 +9,14 @@ jobs:
   pull-request:
     runs-on: ubuntu-latest
     permissions:
+      # Repo scope required to create pull requests against the repository
       contents: read
       pull-requests: write
     steps:
     - name: Checkout remote
       uses: actions/checkout@v4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT }}
         repository: builtmighty/smart-health-cards.github.io
 
     # Make changes to the pull request
@@ -26,7 +27,7 @@ jobs:
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT }}
         branch: create-pull-request/br_pull-request
         branch-suffix: timestamp
         delete-branch: true
