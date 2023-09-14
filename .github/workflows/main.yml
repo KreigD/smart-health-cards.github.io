@@ -18,8 +18,8 @@ jobs:
     # Create the commit to send to the remote repository
     - name: Create commit
       run: |
-        git config --global user.name 'GitHub'
-        git config --global user.email '
+        git config --global user.name 'KreigD'
+        git config --global user.email 'kreig.e.durham@gmail.com'
         git add .
         git commit -m "Update from other repo"
         git push
