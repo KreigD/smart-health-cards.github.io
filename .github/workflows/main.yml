@@ -40,11 +40,14 @@ jobs:
 
     - name: Commit changes
       run: |
+        rm -rf changes/.git
         cp -r changes/* .
+        rm -rf changes
         git config --global user.name '${{ github.event.head_commit.author.name }}'
         git config --global user.email '${{ github.event.head_commit.author.email }}'
         git add .
         git commit -m "${{ github.event.head_commit.message }}"
+        git log --oneline -n 5
       # uses: EndBug/add-and-commit@v9
       # with:
       #   cwd: changes
