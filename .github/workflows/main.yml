@@ -5,11 +5,14 @@ on:
     branches:
       gh-pages
 
+env:
+  GITHUB_TOKEN: ${{ secrets.PAT }}
+
 jobs:
   build-changes:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
     - name: Save changes
       uses: actions/upload-artifact@v3
       with:
@@ -25,9 +28,9 @@ jobs:
       pull-requests: write
     steps:
     - name: Checkout remote
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
-        token: ${{ secrets.PAT }}
+        token: ${{ env.GITHUB_TOKEN }}
         repository: KreigD/smart-health-cards-staging.github.io
         ref: gh-pages
 
@@ -45,7 +48,7 @@ jobs:
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
       with:
-        token: ${{ secrets.PAT }}
+        token: ${{ env.GITHUB_TOKEN }}
         branch: create-pull-request/br_pull-request
         branch-suffix: timestamp
         delete-branch: true
