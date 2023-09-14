@@ -17,12 +17,17 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.PAT }}
-        repository: smart-health-cards/smart-health-cards-staging.github.io
+        repository: KreigD/smart-health-cards-staging.github.io
 
-    # Make changes to the pull request
+    # Update the pull request with the local changes
     - name: Update pull request
       run: |
-        git log -1 --pretty=%B > pull_request.txt
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        git checkout -b create-pull-request/br_pull-request
+        git add .
+        git commit -m "Update from other repo"
+        git push origin create-pull-request/br_pull-request
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
