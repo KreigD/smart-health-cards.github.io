@@ -18,6 +18,11 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         repository: builtmighty/smart-health-cards.github.io
 
+    # Make changes to the pull request
+    - name: Update pull request
+      run: |
+        git log -1 --pretty=%B > pull_request.txt
+
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
       with:
