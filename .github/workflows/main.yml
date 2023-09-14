@@ -12,22 +12,16 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-    - name: Make Changes
-      run: |
-        # Add your commands here to make the necessary changes
-        echo "This is a test change" > test.txt
-        git add .
-        git commit -m "Update files for workflow"
-        git push origin gh-pages
+    - name: Checkout local
+      uses: actions/chckout@v4
 
-    - name: Checkout
+    - name: Checkout remote
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         repository: builtmighty/smart-health-cards.github.io
         ref: gh-pages
 
-    - name: Update pull request
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
