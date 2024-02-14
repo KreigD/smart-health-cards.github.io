@@ -14,7 +14,7 @@ jobs:
         uses: ruzickap/action-my-broken-link-checker@v2
         with:
           url: https://smart.kreigd.com
-          cmd_params: "--buffer-size=8192 --max-connections=10 --color=always --verbose"      
-      - name: Output 404 results
-        run: |
-          grep -Eo '404 Not Found' ${{ steps.Check.outputs.stdout }}
+          cmd_params: "--buffer-size=8192 --max-connections=10 --color=always --verbose"
+      - name: Output Results # Output all error results from the Check step
+        run: echo "${{ steps.Check.outputs.results }}"
+
