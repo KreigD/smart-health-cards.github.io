@@ -6,21 +6,12 @@ on:
       - gh-pages # Push events to gh-pages branch
 
 jobs:
-  broken-link-check:
+  my-broken-link-checker:
+    name: Check broken links
     runs-on: ubuntu-latest
     steps:
-      # - name: Check broken links
-      #   env:
-      #     INPUT_URL: https://${{ github.event.repository.name }}
-      #     INPUT_PAGES_PATH: ./
-      #     INPUT_CMD_PARAMS: '--verbose --buffer-size=8192 --max-connections=10 --color=always --skip-tls-verification'
-      #   run: |
-      #     wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
-
-      - name: Check links using container
+      - name: Check
         uses: ruzickap/action-my-broken-link-checker@v2
         with:
           url: https://smart.kreigd.com
-          pages_path: ./
-          cmd_params: '--verbose --buffer-size=8192 --max-connections=10 --color=always --skip-tls-verification --header="User-Agent:curl/7.54.0"'
-          debug: true
+          cmd_params: "--buffer-size=8192 --max-connections=10 --color=always --verbose"
