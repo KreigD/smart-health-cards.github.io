@@ -12,7 +12,7 @@ jobs:
       - name: Check broken links
         env:
           INPUT_URL: https://${{ github.event.repository.name }}
-          INPUT_PAGES_PATH: ./_site
+          INPUT_PAGES_PATH: ./
           INPUT_CMD_PARAMS: '--verbose --buffer-size=8192 --max-connections=10 --color=always --skip-tls-verification'
         run: |
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
@@ -21,6 +21,6 @@ jobs:
         uses: ruzickap/action-my-broken-link-checker@v2
         with:
           url: https://smart.kreigd.com
-          pages_path: ./_site
+          pages_path: ./
           cmd_params: '--verbose --buffer-size=8192 --max-connections=10 --color=always --skip-tls-verification --header="User-Agent:curl/7.54.0"'
           debug: true
