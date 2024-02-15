@@ -6,15 +6,12 @@ on:
       - gh-pages # Push events to gh-pages branch
 
 jobs:
-  my-broken-link-checker:
-    name: Check broken links
+  check:
+    name: Broken Link Check
     runs-on: ubuntu-latest
     steps:
-      - name: Check
-        uses: ruzickap/action-my-broken-link-checker@v2
+      - name: Broken Link Check
+        uses: technote-space/broken-link-checker-action@v2
         with:
-          url: https://smart.kreigd.com
-          cmd_params: "--buffer-size=8192 --max-connections=10 --color=always --verbose"
-      - name: Output Results # Output all error results from the Check step
-        run: echo "${{ steps.Check.outputs.results }}"
+          TARGET: https://smart.kreigd.com
 
